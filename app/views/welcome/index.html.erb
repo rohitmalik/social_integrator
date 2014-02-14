@@ -1,0 +1,28 @@
+ <div class="jumbotron">
+  <% if user_signed_in? %>
+    <h1>Welcome back, Idify Solutions</h1>
+    <p class="lead">
+      You have signed in!  Check this is Social integrator site.
+    </p>
+    <h1 align = center > Menu </h1><br>
+    <h2><%= link_to 'Profile', welcome_show_path %></h2><br>
+    <h2><%= link_to 'Newsfeed', welcome_news_path %></h2><br>
+      <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-large btn-danger' %>
+  <% else %>
+    <h1>Welcome, new user!</h1>
+    <p class="lead">
+      You must sign in or sign up before you can access our Social integrator site.
+    </p>
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %><br>
+    <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %><br>
+    <%= link_to "Sign in with Linkedin",user_omniauth_authorize_path(:linkedin) %><br>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
+      </div>
+      <div class="span6">
+        <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>
